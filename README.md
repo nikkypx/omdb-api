@@ -1,8 +1,6 @@
 # Omdb::Api
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omdb/api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ruby interface for the [Open Movie Database API](http://omdbapi.com/)
 
 ## Installation
 
@@ -22,13 +20,67 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+OMDB.find takes an IMDB id and will return an OMDB::Movie object
+
+    $ OMDB.find('tt1392190')
+    => #<OMDB::Movie:0x007fe8eeeaf860
+     @actors="Tom Hardy, Charlize Theron, Nicholas Hoult, Rosie Huntington-Whiteley",
+     @awards="N/A",
+    
+
+OMDB.find_by_title takes a title and will return the first occurence
+
+    $ OMDB.find_by_title('star wars')
+    => #<OMDB::Movie:0x007fe43bf53968>
+
+
+OMDB.find_all_by_title takes a title and will return a collection of OMDB::Movie objects:
+
+    $ OMDB.find_all_by_title('star wars')
+    => => [#<OMDB::Movie:0x007ff1335ea610
+     @actors="Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing",
+     @awards="Won 6 Oscars. Another 38 wins & 26 nominations.",
+
+An OMDB::Movie object has a number of attributes you can call on it, for example.
+    
+    $ movie = OMDB.find_by_title('fight club')
+    $ movie.rated 
+    => "R"
+    
+    $ OMDB.find_by_title('star wars').title
+    => "Star Wars"
+    
+    $ OMDB.find_by_title('star wars').year
+    => "1983"
+    
+    $ OMDB.find_all_by_title('star').first.title
+    => "Star Wars: Episode IV - A New Hope"
+
+A complete list of OMDB::Movie attributes
+    
+    OMDB::Movie#title    
+    OMDB::Movie#actors
+    OMDB::Movie#awards
+    OMDB::Movie#country
+    OMDB::Movie#director
+    OMDB::Movie#genre
+    OMDB::Movie#imdbid
+    OMDB::Movie#imdbrating
+    OMDB::Movie#imdbvotes
+    OMDB::Movie#language
+    OMDB::Movie#metascore
+    OMDB::Movie#plot
+    OMDB::Movie#poster
+    OMDB::Movie#rated
+    OMDB::Movie#released
+    OMDB::Movie#runtime
+    OMDB::Movie#writer
+    OMDB::Movie#year
+
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+`$ rake` to run the specs
 
 ## Contributing
 
@@ -38,4 +90,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
