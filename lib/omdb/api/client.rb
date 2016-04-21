@@ -6,15 +6,21 @@ module Omdb
       end
 
       def search(query, params = {})
-        search_params = { s: query }.merge!(params)
-        Omdb::Api::Connection.call(search_params)
+        Omdb::Api::Connection.call(movie_params('search', query, params = {}))
       end
 
-      # def find_by(params = {})
-      #   options[
-      #   Omdb::Api::Connection.call({t: movie})
-      # end
-      # alias_method :find, :find_by
+      def find_by(params = {})
+        Omdb::Api::Connection.call(movie_params('find', nil, params))
+      end
+      alias_method :find, :find_by
+
+      def movie_params(type, query = nil, params = {})
+        movie_params = if type.eql?('find')
+                         params.key?(:title) ? { t: params[:title] } : { i: params[:id] }
+                       else
+                         { s: query }
+                       end.merge!(params.reject! { |k, _| k != 'plot' || k != 'tomatoes' } || {})
+      end
 
     end
   end

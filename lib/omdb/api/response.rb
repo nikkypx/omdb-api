@@ -6,22 +6,20 @@ module Omdb
         @response = JSON.parse(response)
       end
 
-      def results
-        @response.fetch("Search")
-      rescue KeyError
-        @response.fetch("Find")
-      end
-
-      def collection
-        Omdb::Api::Collection.new(movies)
+      def data
+        @response.key?("Search") ? collection : Omdb::Api::Movie.new(@response)
       end
 
       def movies
         [].tap do |movies|
-          results.each do |movie|
+          @response.fetch("Search").each do |movie|
             movies << Omdb::Api::Movie.new(movie)
           end
         end
+      end
+
+      def collection
+        Omdb::Api::Collection.new(movies)
       end
     end
   end

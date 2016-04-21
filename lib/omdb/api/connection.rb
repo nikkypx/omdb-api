@@ -16,14 +16,11 @@ module Omdb
       end
 
       def request
-        begin
-          RestClient.get(BASE_URI, params: params)
-        rescue
-        end
+        RestClient.get(BASE_URI, params: params)
       end
 
       def response
-        Omdb::Api::Response.new(request).collection
+        Omdb::Api::Response.new(request).data
       end
     end
   end

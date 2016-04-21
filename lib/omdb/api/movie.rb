@@ -31,10 +31,8 @@ module Omdb
       end
 
       def set_attrs(response)
-        [].tap do |attributes|
-          response.keys.each do |key|
-            attributes << instance_variable_set("@#{key.downcase}".to_sym, response[key])
-          end
+        response.keys.each do |key|
+          instance_variable_set("@#{key.downcase}".to_sym, response[key])
         end
       end
     end

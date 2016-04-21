@@ -2,19 +2,19 @@ require 'spec_helper'
 
 RSpec.describe Omdb::Api do
 
-  # describe '#find_by' do
-  #   it 'returns a response a movie object' do
-  #     VCR.use_cassette('find_a_movie') do
-  #       expect(Omdb::Api.find_by(:title, "Indiana Jones")).to be_a(Omdb::Api::Movie)
-  #     end
-  #   end
+  describe '#find_by' do
+    it 'can find by title' do
+      VCR.use_cassette('find_a_movie') do
+        expect(Omdb::Api.find_by(title: "Indiana Jones")).to be_a(Omdb::Api::Movie)
+      end
+    end
 
-  #   it 'can find a movie by the title' do
-  #     VCR.use_cassette('find_a_movie') do
-  #       expect(Omdb::Api.find_by(:title, "Indiana Jones")).to eq("")
-  #     end
-  #   end
-  # end
+    it 'can find by imdbid' do
+      VCR.use_cassette('find_by_id') do
+        expect(Omdb::Api.find_by(id: 'tt0083929')).to be_a(Omdb::Api::Movie)
+      end
+    end
+  end
 
   describe '#search' do
     it 'returns a collection object' do

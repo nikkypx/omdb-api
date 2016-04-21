@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.omdbapi.com/?i=tt0083929
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Thu, 21 Apr 2016 06:00:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4dc415e06bfe79ffd1e4a8825e1021e71461218416; expires=Fri, 21-Apr-17
+        06:00:16 GMT; path=/; domain=.omdbapi.com; HttpOnly
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Fri, 22 Apr 2016 06:00:16 GMT
+      Last-Modified:
+      - Thu, 21 Apr 2016 05:56:21 GMT
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Cf-Ray:
+      - 296e9d6198ab079d-MIA
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA1xRXW8aQQz8K5Yf2kbaQmiF1NwbkNAI5RR0kH48mjuz57Br
+        o909EdQ/X12rvvTN9ljjmfEv3EsJjBWuKRfYS+QMVKCRznM0LfAovkeHP5kS
+        Vji7+/IJHTZUuMMKm7HmwJT/tLPPsBg8/FsatEgcue9uIYqiw6+saRysLHJ3
+        dXCfKBI6vJfEbbHxwiJe4ZHbE6cg6tHh9ySFR2RFkZMprJJdGD7kNjHrOdD1
+        xsF/2MHsdIMOFyNpxgp3TApbVnWwYVU5coINZVN4YvG9g83QeYaGRXsLnYPG
+        DpwKNBZJh4wOt8HKKA98suEMdoSdDaXnpLCiIEdLKgS9+B5y25sFyGXoWEsG
+        Sgysr3YV9VB6lgTRcgGJZ0uFtEAeDq/cllxB5jcHXRp8BtIOkrUn0PeQLIQJ
+        Onwi9QP5McMH9UHy+JuVDVrSFSt82S1G1xdK3eh6BhdReAczUIuiVMR0ZNla
+        /htpX8q5mk6FJpE7oY8Su8OktTiVSJ7ztJ7W3+bLev8yr/f17fP+4e15PV/W
+        Yb4kXeqP07r8XlRIcrlfVnqFb1VkpW+gg4NefJhhfHCEsYGBXlYBKPp8U0sS
+        i5PzwdFuZq6kowSyIyixBBS5VkrmekZQobD8klSQm80sdQxNTaCCni5KVkol
+        JQYGFsaWRpZKOkohlQUgg3LzyzJTwWmvuCA/rxgkFFJUmqpUCwDrYu9W0AIA
+        AA==
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 06:00:16 GMT
+recorded_with: VCR 3.0.1
