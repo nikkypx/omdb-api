@@ -29,4 +29,13 @@ RSpec.describe Omdb::Api do
       end
     end
   end
+
+  describe '#movie' do
+    it 'has attributes set' do
+      VCR.use_cassette('search_movies') do
+        movie = Omdb::Api.search('indiana jones').first
+        expect(movie).to respond_to(:imdbid, :poster, :title, :type, :year)
+      end
+    end
+  end
 end

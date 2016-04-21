@@ -19,21 +19,21 @@ module Omdb
         released
         runtime
         title
+        type
         writer
         year
         error)
 
       attr_reader *MOVIE_ATTRIBUTES
 
-      def initialize(movie)
-        @movie = movie
-        attrs
+      def initialize(response)
+        set_attrs(response)
       end
 
-      def attrs
+      def set_attrs(response)
         [].tap do |attributes|
-          @movie.keys.each do |key|
-            attributes << instance_variable_set("@#{key.downcase}".to_sym, @movie[key])
+          response.keys.each do |key|
+            attributes << instance_variable_set("@#{key.downcase}".to_sym, response[key])
           end
         end
       end
