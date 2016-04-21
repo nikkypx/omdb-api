@@ -20,42 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-OMDB.find takes an IMDB id and will return an OMDB::Movie object
-
-    $ OMDB.find('tt1392190')
-    => #<OMDB::Movie:0x007fe8eeeaf860
-     @actors="Tom Hardy, Charlize Theron, Nicholas Hoult, Rosie Huntington-Whiteley",
-     @awards="N/A",
-    
-
-OMDB.find_by_title takes a title and will return the first occurence
-
-    $ OMDB.find_by_title('star wars')
-    => #<OMDB::Movie:0x007fe43bf53968>
-
-
-OMDB.find_all_by_title takes a title and will return a collection of OMDB::Movie objects:
-
-    $ OMDB.find_all_by_title('star wars')
-    => => [#<OMDB::Movie:0x007ff1335ea610
-     @actors="Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing",
-     @awards="Won 6 Oscars. Another 38 wins & 26 nominations.",
-
-An OMDB::Movie object has a number of attributes you can call on it, for example.
-    
-    $ movie = OMDB.find_by_title('fight club')
-    $ movie.rated 
-    => "R"
-    
-    $ OMDB.find_by_title('star wars').title
-    => "Star Wars"
-    
-    $ OMDB.find_by_title('star wars').year
-    => "1983"
-    
-    $ OMDB.find_all_by_title('star').first.title
-    => "Star Wars: Episode IV - A New Hope"
-
+TODO
 A complete list of OMDB::Movie attributes
     
     OMDB::Movie#title    
