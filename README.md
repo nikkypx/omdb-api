@@ -36,6 +36,31 @@ Omdb::Api.search('indiana jones')
 
 ```
 
+An `Omdb::Api::Movie` object has
+
+```ruby
+#actors
+#awards
+#country
+#director
+#genre
+#imdbid
+#imdbrating
+#imdbvotes
+#language
+#metascore
+#plot
+#poster
+#rated
+#released
+#response
+#runtime
+#title
+#type
+#writer
+#year
+```
+
 
 ## Development
 
