@@ -20,27 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO
-A complete list of OMDB::Movie attributes
-    
-    OMDB::Movie#title    
-    OMDB::Movie#actors
-    OMDB::Movie#awards
-    OMDB::Movie#country
-    OMDB::Movie#director
-    OMDB::Movie#genre
-    OMDB::Movie#imdbid
-    OMDB::Movie#imdbrating
-    OMDB::Movie#imdbvotes
-    OMDB::Movie#language
-    OMDB::Movie#metascore
-    OMDB::Movie#plot
-    OMDB::Movie#poster
-    OMDB::Movie#rated
-    OMDB::Movie#released
-    OMDB::Movie#runtime
-    OMDB::Movie#writer
-    OMDB::Movie#year
+
+```ruby
+Omdb::Api.find_by(title: 'fight club')
+=> #<Omdb::Api::Movie:0x007ffec3089188 @title="Fight Club"...
+
+Omdb::Api.find_by(id: 'tt0083929')
+
+Omdb::Api.search('indiana jones')
+=> [#<Omdb::Api::Movie:0x007ffec28ad1a8 @title="Indiana...
+
+```
+
+A `#search` will return a collection of `Omdb::Api::Movie` objects and a `find` or `find_by` will return a single 
+`Omdb::Api::Movie` object.
 
 
 ## Development
@@ -49,7 +42,7 @@ A complete list of OMDB::Movie attributes
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omdb-api.
+Bug reports and pull requests are welcome on GitHub at https://github.com/nikkypx/omdb-api.
 
 
 ## License
