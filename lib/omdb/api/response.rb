@@ -1,3 +1,5 @@
+require 'json'
+
 module Omdb
   module Api
     class Response

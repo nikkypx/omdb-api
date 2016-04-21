@@ -1,4 +1,4 @@
-require 'rest_client'
+require 'rest-client'
 
 module Omdb
   module Api
