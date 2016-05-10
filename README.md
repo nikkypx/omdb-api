@@ -1,5 +1,7 @@
 # Omdb::Api
 
+[![Build Status](https://travis-ci.org/nikkypx/omdb-api.svg?branch=master)](https://travis-ci.org/nikkypx/omdb-api)
+
 A ruby interface for the [Open Movie Database API](http://omdbapi.com/)
 
 ## Installation
