@@ -1,7 +1,6 @@
 module Omdb
   module Api
     class Client
-
       def initialize(options)
       end
 
@@ -15,13 +14,12 @@ module Omdb
       alias_method :find, :find_by
 
       def movie_params(type, query = nil, params = {})
-        movie_params = if type.eql?('find')
-                         params.key?(:title) ? { t: params[:title] } : { i: params[:id] }
-                       else
-                         { s: query }
-                       end.merge!(params.reject! { |k, _| k != 'plot' || k != 'tomatoes' } || {})
+        if type.eql?('find')
+          params.key?(:title) ? { t: params[:title] } : { i: params[:id] }
+        else
+          { s: query }
+        end.merge!(params.reject! { |k, _| k != 'plot' || k != 'tomatoes' } || {})
       end
-
     end
   end
 end

@@ -1,13 +1,12 @@
-require "omdb/api/version"
-require "omdb/api/collection"
-require "omdb/api/connection"
-require "omdb/api/movie"
-require "omdb/api/client"
-require "omdb/api/response"
+require 'omdb/api/version'
+require 'omdb/api/collection'
+require 'omdb/api/connection'
+require 'omdb/api/movie'
+require 'omdb/api/client'
+require 'omdb/api/response'
 
 module Omdb
   module Api
-
     def self.client(options = {})
       Omdb::Api::Client.new(options)
     end
@@ -20,6 +19,5 @@ module Omdb
     def self.respond_to_missing?(method, include_private = false)
       method =~ /search|find/ || super
     end
-
   end
 end

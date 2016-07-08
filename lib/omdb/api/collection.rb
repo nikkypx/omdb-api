@@ -8,7 +8,7 @@ module Omdb
       end
 
       def each
-        movies.each {|item| yield item}
+        movies.each { |item| yield item }
       end
 
       private

@@ -1,7 +1,6 @@
 module Omdb
   module Api
     class Movie
-
       MOVIE_ATTRIBUTES = %i(
         actors
         awards
@@ -24,7 +23,7 @@ module Omdb
         year
         error)
 
-      attr_reader *MOVIE_ATTRIBUTES
+      attr_reader(*MOVIE_ATTRIBUTES)
 
       def initialize(response)
         set_attrs(response)
