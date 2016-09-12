@@ -3,7 +3,7 @@ require 'rest-client'
 module Omdb
   module Api
     class Connection
-      BASE_URI = 'https://www.omdbapi.com'
+      BASE_URI = 'https://www.omdbapi.com'.freeze
 
       attr_reader :params
 

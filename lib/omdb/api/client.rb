@@ -1,9 +1,6 @@
 module Omdb
   module Api
     class Client
-      def initialize(options)
-      end
-
       def search(query, params = {})
         Omdb::Api::Connection.call(movie_params('search', query, params = {}))
       end

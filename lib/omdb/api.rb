@@ -7,8 +7,8 @@ require 'omdb/api/response'
 
 module Omdb
   module Api
-    def self.client(options = {})
-      Omdb::Api::Client.new(options)
+    def self.client
+      Omdb::Api::Client.new
     end
 
     def self.method_missing(method, *args, &block)

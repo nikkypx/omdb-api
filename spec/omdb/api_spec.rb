@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe Omdb::Api do
-
   describe '#find_by' do
     it 'can find by title' do
       VCR.use_cassette('find_a_movie') do
