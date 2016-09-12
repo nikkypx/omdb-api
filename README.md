@@ -1,4 +1,4 @@
-# Omdb::Api
+# Omdb Api
 
 [![Build Status](https://travis-ci.org/nikkypx/omdb-api.svg?branch=master)](https://travis-ci.org/nikkypx/omdb-api)
 
