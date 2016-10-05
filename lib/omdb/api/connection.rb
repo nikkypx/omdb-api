@@ -5,14 +5,14 @@ module Omdb
     class Connection
       BASE_URI = 'https://www.omdbapi.com'.freeze
 
-      attr_reader :params
+      attr_accessor :params
 
       def self.call(params)
         new(params).response
       end
 
       def initialize(params)
-        @params = params
+        self.params = params
       end
 
       def request
