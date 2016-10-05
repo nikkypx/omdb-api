@@ -15,9 +15,5 @@ module Omdb
       return super unless client.respond_to?(method)
       client.send(method, *args, &block)
     end
-
-    def self.respond_to_missing?(method, include_private = false)
-      method =~ /search|find/ || super
-    end
   end
 end
