@@ -28,41 +28,41 @@ also possible to search by the IMDB id.
 
 
 ```ruby
+require 'omdb/api'
+
 Omdb::Api.find_by(title: 'fight club')
 => #<Omdb::Api::Movie:0x007ffec3089188 @title="Fight Club"...
 
 Omdb::Api.find_by(id: 'tt0083929')
+=> #<Omdb::Api::Movie:0x007f960a648f28
+ @actors="Sean Penn, Jennifer Jason Leigh, Judge Reinhold, Robert Romanus",
 
 Omdb::Api.search('indiana jones')
 => [#<Omdb::Api::Movie:0x007ffec28ad1a8 @title="Indiana...
-
 ```
 
 An `Omdb::Api::Movie` object has
 
-```ruby
-#actors
-#awards
-#country
-#director
-#genre
-#imdbid
-#imdbrating
-#imdbvotes
-#language
-#metascore
-#plot
-#poster
-#rated
-#released
-#response
-#runtime
-#title
-#type
-#writer
-#year
-```
-
+`#actors`
+`#awards`
+`#country`
+`#director`
+`#genre`
+`#imdbid`
+`#imdbrating`
+`#imdbvotes`
+`#language`
+`#metascore`
+`#plot`
+`#poster`
+`#rated`
+`#released`
+`#response`
+`#runtime`
+`#title`
+`#type`
+`#writer`
+`#year`
 
 ## Development
 
@@ -71,7 +71,6 @@ An `Omdb::Api::Movie` object has
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/nikkypx/omdb-api.
-
 
 ## License
 
