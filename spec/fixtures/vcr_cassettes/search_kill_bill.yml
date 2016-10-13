@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.omdbapi.com/?s=kill%20bill
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.3.0 x86_64) ruby/2.3.1p112
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Oct 2016 00:07:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0ec02c8815b5495d72f7783c66566dd01476317278; expires=Fri, 13-Oct-17
+        00:07:58 GMT; path=/; domain=.omdbapi.com; HttpOnly
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Fri, 14 Oct 2016 00:07:58 GMT
+      Last-Modified:
+      - Thu, 13 Oct 2016 00:07:57 GMT
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - MISS
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 2f0e8dec2a55244a-IAD
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA62UXU/bMBSG/4rlG25C6zgfJbmiXdqqG3ahhCZhmpCXuk0a
+        J+4SQ5sg/vvUDiECWrUhLm3L59HznmM/wmvOyjiB7vdH6KdKcOjCb6kQYJAK
+        4YK5FB2gQw1GnJXQhRghA2owzRc/Jx50oVII27bt9KAG/Xqzv53Lh5RDDV7K
+        SvH9nUSpTeV2u2nOVrw6LVinqsTp84rlrJFFJ5b583mXdMncGhD/RqfeSifN
+        yiS6NSDCGrBiUITZSN360ZZ4w93Uj43O3Vy/uw4NhDrrzQo+aX/XwC0N842G
+        0TvTHfPzNSZb2lwZxJvsDuuWRrw97Dc3Nbk6Pz+i4iccEJalxQrIJTh5MTs5
+        2hlTx45lH1Gi3f4/YQ4B3ucc4JOjGZoY95D5H8BXhD07SKTgYCCkXNSgv1yy
+        tHzN0/U2z0a6g5H92T2L8lFG/VgnQaQify5ojRDNb/MLP2vIuq9IQBDFo5wE
+        s4wGNAmzYR1mo1/xeMGvwnlN/KFFvWxH+kd7OnzgZa2SfdiTCjAw43m6c8FL
+        JMfMDdOxnTP0saSnZbpKi6pVH7XrW8i0sfHB+n0QhiG4ZKVc1C2I1YaYPfvM
+        sPDHIH8+pn1oLOPd642UyxYLvx0VbDi9Tx+VW79vkCDaRZgouv6akS8ITb14
+        exEMDYInio5pQrxRSsdDczqm2btRaSYmbTJE19G7UfmhQSUVEzNe3QtVQRc6
+        UIMzXm1kUR1ea3nP4dNvWAd3z8IFAAA=
+    http_version: 
+  recorded_at: Thu, 13 Oct 2016 00:07:59 GMT
+recorded_with: VCR 3.0.3

@@ -7,13 +7,19 @@ require 'omdb/api/response'
 
 module Omdb
   module Api
-    def self.client
-      Omdb::Api::Client.new
-    end
+    class << self
+      def client
+        Omdb::Api::Client
+      end
 
-    def self.method_missing(method, *args, &block)
-      return super unless client.respond_to?(method)
-      client.send(method, *args, &block)
+      def method_missing(method, *args, &block)
+        return super unless client.respond_to?(method)
+        client.send(method, *args)
+      end
+
+      def respond_to_missing?(method, *)
+        method =~ /find(_by)?(_id|_title)?|search/ || super
+      end
     end
   end
 end

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.omdbapi.com/?t=Indiana%20Jones
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin15.3.0 x86_64) ruby/2.3.1p112
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Oct 2016 00:07:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc9dd0ecf562f51500e5256ddaedec97d1476317277; expires=Fri, 13-Oct-17
+        00:07:57 GMT; path=/; domain=.omdbapi.com; HttpOnly
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Fri, 14 Oct 2016 00:07:57 GMT
+      Last-Modified:
+      - Wed, 12 Oct 2016 23:52:34 GMT
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 2f0e8de55ee723ba-IAD
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA1WT0U8bSQzG/xXLD3etNCxJaKDk6QKB0B6bQpMG2pfK7Dq7
+        k8zaezOzRMvp/vfTpJx0PPpnaz7Z3zd/48pGxzjBT1JaEoLPKhyApIRYM9xS
+        iHDpu0Alo8HvTB4nODz/eI4Gv1LkEid4Nz8anqSaHVM4oNEHyKmH/wY7ibZJ
+        KsPRGTRW0OCcxScyLaJVMTAtn1li59nANUmk0KPBmfVcRE2ay8jPLLBsLbsn
+        9hUafPA2cup95s3Gcw8XSg28C4VnltZR/97AnNVXDLddQQHehag+0ZxFFHLu
+        t/w/+na2qMlTEdmH9wbuautsC39St2lI3jTRpB3UB5zgDXlvgwpcqy8NLJkE
+        LlWEfW9gxlKra+DKOasxGpi6w+xMtUzL3jmNOMGHmgVmPoMbFt+/+rH0GYSu
+        LFlcD5VygMaGYKWCfW0dQ9v50KUymXajroe5J+sMcGOFJQL5oiZWp5UNEd6a
+        3XQhwkad0z1YgdoG2FCs2f8eYKMaQ+T2VyRC1PYgsaAXGzI0eEtSdVQlJ6+k
+        cjbU6Y6+ITEw98w7A1NPT7ZAg5faSfQ9TvDbcprOtidfprM9qMAQvoSCfAZT
+        0aQNp7C3EuA3GA1AtLFCKSgH0TsNv4yvY2zD5PjYNlRxOBLKQnBHrxU19KKS
+        Fdq89o/z43w9vsi3i13+UowWo/u42K7dYjkY/FjtxrerapCvqvhl9n2Uz6b7
+        xSrf/9hebB93V/3j7vqvYl7y/eO6X8x2J4uXb6N8df9H9nM9/Ll8PBkMsm2b
+        MplzpFDoIdqnYzRom/LpK0UrFU7wY3byitYaOa0+Ho3Mh8MnSfTTDCcY42Bw
+        fjY+O0WDq75NLzX6bPnww0KrEhJa+Y7xn38BIvj25cADAAA=
+    http_version: 
+  recorded_at: Thu, 13 Oct 2016 00:07:57 GMT
+recorded_with: VCR 3.0.3

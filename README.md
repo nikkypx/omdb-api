@@ -22,13 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-A `#search` will return a collection of `Omdb::Api::Movie` objects and a `find` 
-or `find_by` will return a single `Omdb::Api::Movie` object. It is
-also possible to search by the IMDB id.
+A `#search` will return a collection of `Omdb::Api::Movie` objects and
+`find_by` will return a single `Omdb::Api::Movie` object. You can use
+`#find_by_id` and `#find_by_title` in addition to `find_by`. See below:
 
 
 ```ruby
 require 'omdb/api'
+
+Omdb::Api.find_by_title('star wars')
+=> #<Omdb::Api::Movie:0x007f9a7d453cf0 @actors="Harrison Ford"...
 
 Omdb::Api.find_by(title: 'fight club')
 => #<Omdb::Api::Movie:0x007ffec3089188 @title="Fight Club"...
