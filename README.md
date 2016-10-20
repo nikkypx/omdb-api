@@ -22,9 +22,23 @@ Or install it yourself as:
 
 ## Usage
 
-A `#search` will return a collection of `Omdb::Api::Movie` objects and
-`find_by` will return a single `Omdb::Api::Movie` object. You can use
-`#find_by_id` and `#find_by_title` in addition to `find_by`. See below:
+* Returns an `Omdb::Api::Collection`
+
+`#search('movie')`
+
+* Returns an `Omdb::Api::Movie`
+
+`#find_by(id: 'id')`
+
+`#find_by(title: 'title')`
+
+* Aliases
+
+`#find_by_id('id')`
+
+`#find_by_title('title')`
+
+See below for examples:
 
 
 ```ruby
