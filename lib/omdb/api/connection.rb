@@ -1,5 +1,3 @@
-require 'rest_client'
-
 module Omdb
   module Api
     class Connection

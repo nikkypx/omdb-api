@@ -4,6 +4,7 @@ require 'omdb/api/connection'
 require 'omdb/api/movie'
 require 'omdb/api/client'
 require 'omdb/api/response'
+require 'rest_client'
 
 module Omdb
   module Api
