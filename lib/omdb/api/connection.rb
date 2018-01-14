@@ -3,7 +3,8 @@ module Omdb
     class Connection
       BASE_URI = 'https://www.omdbapi.com'.freeze
 
-      attr_accessor :params, :attr, :m
+      attr_accessor :attr, :m
+      attr_writer :params
 
       def self.call(m, attr, params)
         new(m, attr, params).response

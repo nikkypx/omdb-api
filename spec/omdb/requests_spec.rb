@@ -4,13 +4,17 @@ RSpec.describe Omdb::Api do
   describe 'finding' do
     it '#find_by_title' do
       VCR.use_cassette('find_by_title') do
-        expect(Omdb::Api.find_by_title("Indiana Jones")).to be_a(Omdb::Api::Movie)
+        expect(Omdb::Api.find_by_title('Indiana Jones')).to be_a(
+          Omdb::Api::Movie
+        )
       end
     end
 
     it '#find_by with title arg' do
       VCR.use_cassette('find_by_with_title_arg') do
-        expect(Omdb::Api.find_by(title: "Indiana Jones")).to be_a(Omdb::Api::Movie)
+        expect(Omdb::Api.find_by(title: 'Indiana Jones')).to be_a(
+          Omdb::Api::Movie
+        )
       end
     end
 
@@ -30,7 +34,9 @@ RSpec.describe Omdb::Api do
   describe '#search' do
     it 'returns a collection object' do
       VCR.use_cassette('search_indiana_jones') do
-        expect(Omdb::Api.search('indiana jones')).to be_a(Omdb::Api::Collection)
+        expect(Omdb::Api.search('indiana jones')).to be_a(
+          Omdb::Api::Collection
+        )
       end
     end
 

@@ -1,7 +1,7 @@
 module Omdb
   module Api
     class Movie
-      MOVIE_ATTRIBUTES = %i(
+      MOVIE_ATTRIBUTES = %i[
         actors
         awards
         country
@@ -21,16 +21,17 @@ module Omdb
         type
         writer
         year
-        error)
+        error
+      ].freeze
 
       attr_reader(*MOVIE_ATTRIBUTES)
 
       def initialize(response)
-        set_attrs(response)
+        attrs(response)
       end
 
-      def set_attrs(response)
-        response.keys.each do |key|
+      def attrs(response)
+        response.each_key do |key|
           instance_variable_set("@#{key.downcase}".to_sym, response[key])
         end
       end
