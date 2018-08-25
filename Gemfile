@@ -1,6 +1,17 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'rake'
 
-# Specify your gem's dependencies in omdb-api.gemspec
+group :development do
+  gem 'pry'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rubocop'
+  gem 'webmock'
+end
+
 gemspec
