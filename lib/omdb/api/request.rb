@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 module Omdb
   module Api
     class Request
-      BASE_URI = 'https://www.omdbapi.com'.freeze
+      BASE_URI = 'https://www.omdbapi.com'.freeze # rubocop:disable Style/RedundantFreeze
 
       attr_reader :api_key, :field, :value, :options
 
-      def initialize(api_key, method, value, options)
-        @api_key = api_key
+      def initialize(client, method, value, options)
+        @api_key = client.api_key
+        @value   = CGI.escape(value)
+        @options = options
         @field   = if /id/.match?(method)
                      'i'
                    elsif /title/.match?(method)
@@ -14,8 +18,6 @@ module Omdb
                    else
                      's'
                    end
-        @value   = CGI.escape(value)
-        @options = options
       end
 
       def query_params
