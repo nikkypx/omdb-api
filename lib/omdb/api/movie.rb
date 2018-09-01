@@ -1,42 +1,32 @@
 # frozen_string_literal: true
 
+require 'klass_param'
+
 module Omdb
   module Api
     class Movie
-      MOVIE_ATTRIBUTES = %i[
-        actors
-        awards
-        country
-        director
-        genre
-        imdbid
-        imdbrating
-        imdbvotes
-        language
-        metascore
-        plot
-        poster
-        rated
-        released
-        runtime
-        title
-        type
-        writer
-        year
-        error
-      ].freeze
+      include KlassParam
 
-      attr_reader(*MOVIE_ATTRIBUTES)
-
-      def initialize(response)
-        attrs(response)
-      end
-
-      def attrs(response)
-        response.each_key do |key|
-          instance_variable_set("@#{key.downcase}".to_sym, response[key])
-        end
-      end
+      param :actors
+      param :awards
+      param :country
+      param :director
+      param :genre
+      param :imdbid
+      param :imdbrating
+      param :imdbvotes
+      param :language
+      param :metascore
+      param :plot
+      param :poster
+      param :rated
+      param :released
+      param :runtime
+      param :title
+      param :type
+      param :writer
+      param :year
+      param :error
     end
   end
 end

@@ -8,9 +8,9 @@ module Omdb
           request = Omdb::Api::Request.new(self, method, value, options)
 
           if request.success?
-            Omdb::Api::Movie.new(request.response)
+            Omdb::Api::Movie.new(params: request.response)
           else
-            Omdb::Api::Error.new(request.response)
+            Omdb::Api::Error.new(params: request.response)
           end
         end
       end
@@ -21,11 +21,11 @@ module Omdb
         if request.success?
           Omdb::Api::Collection.new(
             request.response.fetch('Search').map do |movie|
-              Omdb::Api::Movie.new(movie)
+              Omdb::Api::Movie.new(params: movie)
             end
           )
         else
-          Omdb::Api::Error.new(request.response)
+          Omdb::Api::Error.new(params: request.response)
         end
       end
     end

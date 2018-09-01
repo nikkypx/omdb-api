@@ -3,6 +3,29 @@
 require 'spec_helper'
 
 RSpec.describe Omdb::Api::Movie do
+  MOVIE_ATTRIBUTES = %w[
+    actors
+    awards
+    country
+    director
+    genre
+    imdbid
+    imdbrating
+    imdbvotes
+    language
+    metascore
+    plot
+    poster
+    rated
+    released
+    runtime
+    title
+    type
+    writer
+    year
+    error
+  ]
+
   let(:client) { Omdb::Api::Client.new(api_key: 'AK') }
 
   describe '#new' do
@@ -12,7 +35,7 @@ RSpec.describe Omdb::Api::Movie do
 
     it 'responds to correct attributes' do
       response = client.find_by_title('star wars')
-      Omdb::Api::Movie::MOVIE_ATTRIBUTES.each do |attr|
+      MOVIE_ATTRIBUTES.each do |attr|
         expect(response.respond_to?(attr))
       end
     end
