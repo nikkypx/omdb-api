@@ -26,11 +26,21 @@ Or install it yourself as:
 
 ## Usage
 
+### Configuration
+
 First you have to create a client object with your API key
 
 `client = Omdb::Api::Client.new(api_key: [your API key])`
 
-Then you can query with this client object
+You can also set the API key with a block
+
+```ruby
+client = Omdb::Api::Client.new do |config|
+  config.api_key = api_key
+end
+```
+
+### API
 
 ```ruby
 require 'omdb/api'
