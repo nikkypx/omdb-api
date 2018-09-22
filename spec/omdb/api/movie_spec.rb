@@ -24,7 +24,7 @@ RSpec.describe Omdb::Api::Movie do
     writer
     year
     error
-  ]
+  ].freeze
 
   let(:client) { Omdb::Api::Client.new(api_key: 'AK') }
 

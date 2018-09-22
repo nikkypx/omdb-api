@@ -2,6 +2,6 @@
 
 module Omdb
   module Api
-    VERSION = '1.1.0'.freeze # rubocop:disable Style/RedundantFreeze
+    VERSION = '1.1.0'.freeze
   end
 end

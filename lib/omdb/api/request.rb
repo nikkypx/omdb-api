@@ -3,7 +3,7 @@
 module Omdb
   module Api
     class Request
-      BASE_URI = 'https://www.omdbapi.com'.freeze # rubocop:disable Style/RedundantFreeze
+      BASE_URI = 'https://www.omdbapi.com'.freeze
 
       attr_reader :api_key, :field, :value, :options
 
