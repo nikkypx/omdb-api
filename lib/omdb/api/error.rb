@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
-require 'klass_param'
-
 module Omdb
   module Api
     class Error
-      include KlassParam
+      attr_reader :response
+      :error
 
-      param :response
-      param :error
+      def initialize(params)
+        params.each_pair do |k, v|
+          instance_variable_set("@#{k}", v)
+        end
+      end
     end
   end
 end

@@ -1,32 +1,34 @@
 # frozen_string_literal: true
 
-require 'klass_param'
-
 module Omdb
   module Api
     class Movie
-      include KlassParam
+      attr_reader :actors
+      :awards
+      :country
+      :director
+      :genre
+      :imdb_id
+      :imdb_rating
+      :imdb_votes
+      :language
+      :metascore
+      :plot
+      :poster
+      :rated
+      :released
+      :runtime
+      :title
+      :type
+      :writer
+      :year
+      :error
 
-      param :actors
-      param :awards
-      param :country
-      param :director
-      param :genre
-      param :imdb_id
-      param :imdb_rating
-      param :imdb_votes
-      param :language
-      param :metascore
-      param :plot
-      param :poster
-      param :rated
-      param :released
-      param :runtime
-      param :title
-      param :type
-      param :writer
-      param :year
-      param :error
+      def initialize(params)
+        params.each_pair do |k, v|
+          instance_variable_set("@#{k}", v)
+        end
+      end
     end
   end
 end

@@ -11,9 +11,9 @@ module Omdb
           movie = __format_data(data)
 
           if request.success?
-            Omdb::Api::Movie.new(params: movie)
+            Omdb::Api::Movie.new(movie)
           else
-            Omdb::Api::Error.new(params: movie)
+            Omdb::Api::Error.new(movie)
           end
         end
       end
@@ -26,11 +26,11 @@ module Omdb
             request.response.fetch('Search').map do |movie|
               movie = __format_data(movie)
 
-              Omdb::Api::Movie.new(params: movie)
+              Omdb::Api::Movie.new(movie)
             end
           )
         else
-          Omdb::Api::Error.new(params: request.response)
+          Omdb::Api::Error.new(request.response)
         end
       end
 
