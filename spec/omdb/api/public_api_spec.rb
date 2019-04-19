@@ -84,6 +84,10 @@ RSpec.describe Omdb::Api::PublicApi do
       it 'returns an Omdb::Api::Collection object' do
         expect(client.search('indiana jones')).to be_a(Omdb::Api::Collection)
       end
+
+      it 'collection has movies' do
+        expect(client.search('indiana jones').movies).to be_a(Array)
+      end
     end
 
     describe 'error' do

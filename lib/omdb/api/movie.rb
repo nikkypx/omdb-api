@@ -12,9 +12,9 @@ module Omdb
       param :country
       param :director
       param :genre
-      param :imdbid
-      param :imdbrating
-      param :imdbvotes
+      param :imdb_id
+      param :imdb_rating
+      param :imdb_votes
       param :language
       param :metascore
       param :plot
