@@ -83,9 +83,9 @@ An `Omdb::Api::Movie` object has
 #country
 #director
 #genre
-#imdbid
-#imdbrating
-#imdbvotes
+#imdb_id
+#imdb_rating
+#imdb_votes
 #language
 #metascore
 #plot
