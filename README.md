@@ -75,7 +75,7 @@ Returns an `Omdb::Api::Collection`
 An unsuccessful query will return an `Omdb::Api::Error` object
 
 
-An `Omdb::Api::Movie` object has
+An `Omdb::Api::Movie` object has getters for these attributes
 
 ```ruby
 #actors
