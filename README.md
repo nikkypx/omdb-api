@@ -40,7 +40,7 @@ client = Omdb::Api::Client.new do |config|
 end
 ```
 
-### API
+### Fetching
 
 ```ruby
 require 'omdb/api'
@@ -75,37 +75,59 @@ Returns an `Omdb::Api::Collection`
 An unsuccessful query will return an `Omdb::Api::Error` object
 
 
-An `Omdb::Api::Movie` object has getters for these attributes
+### API
 
-```ruby
-#actors
-#awards
-#country
-#director
-#genre
-#imdb_id
-#imdb_rating
-#imdb_votes
-#language
-#metascore
-#plot
-#poster
-#rated
-#released
-#response
-#runtime
-#title
-#type
-#writer
-#year
-```
+**Omdb::Api::Movie**
 
-An `Omdb::Api::Error` object has
+*#actors*
 
-```ruby
-#response
-#error
-```
+*#awards*
+
+*#box_office*
+
+*#country*
+
+*#director*
+
+*#dvd*
+
+*#error*
+
+*#genre*
+
+*#imdb_id*
+
+*#imdb_rating*
+
+*#imdb_votes*
+
+*#language*
+
+*#metascore*
+
+*#plot*
+
+*#poster*
+
+*#rated*
+
+*#released*
+
+*#runtime*
+
+*#title*
+
+*#type*
+
+*#writer*
+
+*#year*
+
+**Omdb::Api::Error**
+
+*#response*
+
+*#error*
 
 ## Development
 
