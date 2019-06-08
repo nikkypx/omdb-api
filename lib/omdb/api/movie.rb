@@ -3,26 +3,28 @@
 module Omdb
   module Api
     class Movie
-      attr_reader :actors
-      :awards
-      :country
-      :director
-      :genre
-      :imdb_id
-      :imdb_rating
-      :imdb_votes
-      :language
-      :metascore
-      :plot
-      :poster
-      :rated
-      :released
-      :runtime
-      :title
-      :type
-      :writer
-      :year
-      :error
+      attr_reader :actors,
+                  :awards,
+                  :box_office,
+                  :country,
+                  :director,
+                  :dvd,
+                  :error,
+                  :genre,
+                  :imdb_id,
+                  :imdb_rating,
+                  :imdb_votes,
+                  :language,
+                  :metascore,
+                  :plot,
+                  :poster,
+                  :rated,
+                  :released,
+                  :runtime,
+                  :title,
+                  :type,
+                  :writer,
+                  :year
 
       def initialize(params)
         params.each_pair do |k, v|
