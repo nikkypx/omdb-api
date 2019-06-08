@@ -2,6 +2,6 @@
 
 module Omdb
   module Api
-    VERSION = '1.3.0'.freeze
+    VERSION = '1.3.0'
   end
 end

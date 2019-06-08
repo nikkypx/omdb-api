@@ -3,7 +3,7 @@
 module Omdb
   module Api
     class Request
-      BASE_URI = 'https://www.omdbapi.com'.freeze
+      BASE_URI = 'https://www.omdbapi.com'
 
       attr_reader :api_key, :field, :value, :options
 
