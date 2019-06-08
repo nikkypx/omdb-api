@@ -6,13 +6,15 @@ RSpec.describe Omdb::Api::Movie do
   MOVIE_ATTRIBUTES = %w[
     actors
     awards
+    box_office
     country
     director
+    dvd
     error
     genre
-    imdbid
-    imdbrating
-    imdbvotes
+    imdb_id
+    imdb_rating
+    imdb_votes
     language
     metascore
     plot
@@ -47,12 +49,24 @@ RSpec.describe Omdb::Api::Movie do
       expect(response.awards).to eq 'Won 6 Oscars. Another 50 wins & 28 nominations.'
       expect(response.box_office).to eq 'N/A'
       expect(response.country).to eq 'USA'
-      expect(response.dvd).to eq '21 Sep 2004'
       expect(response.director).to eq 'George Lucas'
+      expect(response.dvd).to eq '21 Sep 2004'
+      expect(response.error).to eq nil
       expect(response.genre).to eq 'Action, Adventure, Fantasy'
+      expect(response.imdb_id).to eq 'tt0076759'
+      expect(response.imdb_rating).to eq '8.6'
+      expect(response.imdb_votes).to eq '1,068,163'
       expect(response.language).to eq 'English'
       expect(response.metascore).to eq '90'
       expect(response.plot).to eq "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the evil Darth Vader."
+      expect(response.poster).to eq 'https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg'
+      expect(response.rated).to eq 'PG'
+      expect(response.released).to eq '25 May 1977'
+      expect(response.runtime).to eq '121 min'
+      expect(response.title).to eq 'Star Wars: Episode IV - A New Hope'
+      expect(response.type).to eq 'movie'
+      expect(response.writer).to eq 'George Lucas'
+      expect(response.year).to eq '1977'
     end
   end
 end
