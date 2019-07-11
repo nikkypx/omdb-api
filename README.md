@@ -75,59 +75,42 @@ Returns an `Omdb::Api::Collection`
 An unsuccessful query will return an `Omdb::Api::Error` object
 
 
-### API
+## API
 
-**Omdb::Api::Movie**
+**Parent**<br />
+Omdb::Api::Movie
 
-*#actors*
+**Methods**<br />
+#actors<br />
+#awards<br />
+#box_office<br />
+#country<br />
+#director<br />
+#dvd<br />
+#error<br />
+#genre<br />
+#imdb_id<br />
+#imdb_rating<br />
+#imdb_votes<br />
+#language<br />
+#metascore<br />
+#plot<br />
+#poster<br />
+#rated<br />
+#released<br />
+#runtime<br />
+#title<br />
+#type<br />
+#writer<br />
+#year<br />
 
-*#awards*
 
-*#box_office*
+**Parent**<br />
+Omdb::Api::Error
 
-*#country*
-
-*#director*
-
-*#dvd*
-
-*#error*
-
-*#genre*
-
-*#imdb_id*
-
-*#imdb_rating*
-
-*#imdb_votes*
-
-*#language*
-
-*#metascore*
-
-*#plot*
-
-*#poster*
-
-*#rated*
-
-*#released*
-
-*#runtime*
-
-*#title*
-
-*#type*
-
-*#writer*
-
-*#year*
-
-**Omdb::Api::Error**
-
-*#response*
-
-*#error*
+**Methods**<br />
+#response<br />
+#error
 
 ## Development
 
