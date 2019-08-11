@@ -5,38 +5,33 @@ module Omdb
     module PublicApi
       %i[find_by_id find_by_title].each do |method|
         define_method(method) do |value, **options|
-          request = Omdb::Api::Request.new(self, method, value, options)
-
-          data = request.response
-          movie = __format_data(data)
-
-          if request.success?
-            Omdb::Api::Movie.new(movie)
-          else
-            Omdb::Api::Error.new(movie)
+          Omdb::Api::Request.call(self, method, value, options) do |response|
+            response = format_response(response)
+            response.dig('response') == 'False' ? Omdb::Api::Error.new(response) : Omdb::Api::Movie.new(response)
           end
         end
       end
 
       def search(value, options = {})
-        request = Omdb::Api::Request.new(self, 'search', value, options)
+        Omdb::Api::Request.call(self, 'search', value, options) do |response|
+          begin
+            Omdb::Api::Collection.new(
+              response.fetch('Search').map do |movie_data|
+                response = format_response(movie_data)
 
-        if request.success?
-          Omdb::Api::Collection.new(
-            request.response.fetch('Search').map do |movie|
-              movie = __format_data(movie)
-
-              Omdb::Api::Movie.new(movie)
-            end
-          )
-        else
-          Omdb::Api::Error.new(request.response)
+                Omdb::Api::Movie.new(response)
+              end
+            )
+          rescue StandardError
+            Omdb::Api::Error.new(response)
+          end
         end
       end
 
-      def __format_data(data)
-        keys = data.keys.map(&:underscore)
-        keys.zip(data.values).to_h
+      private
+
+      def format_response(response)
+        response.keys.map(&:underscore).zip(response.values).to_h
       end
     end
   end

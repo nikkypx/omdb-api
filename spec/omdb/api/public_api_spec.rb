@@ -65,7 +65,10 @@ RSpec.describe Omdb::Api::PublicApi do
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
-        expect(client.find_by_id('badid')).to be_a(Omdb::Api::Error)
+        response = client.find_by_id('badid')
+        expect(response).to be_a(Omdb::Api::Error)
+        expect(response.response).to eq('False')
+        expect(response.error).to eq('Incorrect IMDb ID.')
       end
     end
   end

@@ -5,10 +5,14 @@ module Omdb
     class Request
       BASE_URI = 'https://www.omdbapi.com'
 
-      attr_reader :api_key, :field, :value, :options
+      attr_reader :client, :field, :value, :options
+
+      def self.call(client, method, value, options, &block)
+        new(client, method, value, options).make_get_to_imdb_api(&block)
+      end
 
       def initialize(client, method, value, options)
-        @api_key = client.api_key
+        @client  = client
         @value   = CGI.escape(value)
         @options = options
         @field   = if /id/.match?(method)
@@ -20,16 +24,15 @@ module Omdb
                    end
       end
 
-      def query_params
-        { query: { apikey: api_key, field.to_s => value.to_s }.merge(options) }
-      end
+      def make_get_to_imdb_api
+        params = {
+          query: {
+            apikey: client.api_key,
+            field.to_s => value.to_s
+          }.merge(options)
+        }
 
-      def response
-        @response ||= HTTParty.get(BASE_URI, query_params)
-      end
-
-      def success?
-        (response['Response'] || response['root']['response']) == 'True'
+        yield HTTParty.get(BASE_URI, params)
       end
     end
   end
