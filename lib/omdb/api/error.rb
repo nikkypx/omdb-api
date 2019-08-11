@@ -3,8 +3,8 @@
 module Omdb
   module Api
     class Error
-      attr_reader :response
-      :error
+      attr_reader :response,
+                  :error
 
       def initialize(params)
         params.each_pair do |k, v|
