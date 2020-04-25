@@ -8,7 +8,11 @@ RSpec.describe Omdb::Api::PublicApi do
   describe '#find_by_title' do
     describe 'success' do
       before do
-        stub_get('?apikey=AK&t=star%2Bwars').to_return(body: fixture('find_by_title.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&t=star%2Bwars')
+          .to_return(
+            body: fixture('find_by_title.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'requests the correct resource' do
@@ -23,7 +27,11 @@ RSpec.describe Omdb::Api::PublicApi do
 
     describe 'error' do
       before do
-        stub_get('?apikey=AK&t=badtitle').to_return(body: fixture('incorrect_title.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&t=badtitle')
+          .to_return(
+            body: fixture('incorrect_title.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
@@ -34,7 +42,11 @@ RSpec.describe Omdb::Api::PublicApi do
 
   describe 'multiple options' do
     before do
-      stub_get('?apikey=AK&t=star%2Bwars&plot=short&r=xml').to_return(body: fixture('find_with_options.json'), headers: { content_type: 'application/xml; charset=utf-8' })
+      stub_get('?apikey=AK&t=star%2Bwars&plot=short&r=xml')
+        .to_return(
+          body: fixture('find_with_options.json'),
+          headers: { content_type: 'application/xml; charset=utf-8' }
+        )
     end
 
     it 'requests the correct resource' do
@@ -46,7 +58,11 @@ RSpec.describe Omdb::Api::PublicApi do
   describe '#find_by_id' do
     describe 'success' do
       before do
-        stub_get('?apikey=AK&i=tt0083929').to_return(body: fixture('find_by_id.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&i=tt0083929')
+          .to_return(
+            body: fixture('find_by_id.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'requests the correct resource' do
@@ -61,7 +77,11 @@ RSpec.describe Omdb::Api::PublicApi do
 
     describe 'error' do
       before do
-        stub_get('?apikey=AK&i=badid').to_return(body: fixture('incorrect_id.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&i=badid')
+          .to_return(
+            body: fixture('incorrect_id.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
@@ -76,7 +96,11 @@ RSpec.describe Omdb::Api::PublicApi do
   describe '#search' do
     describe 'success' do
       before do
-        stub_get('?apikey=AK&s=indiana%2Bjones').to_return(body: fixture('search.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&s=indiana%2Bjones')
+          .to_return(
+            body: fixture('search.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'requests the correct resource' do
@@ -95,7 +119,11 @@ RSpec.describe Omdb::Api::PublicApi do
 
     describe 'error' do
       before do
-        stub_get('?apikey=AK&s=nosearchresults').to_return(body: fixture('no_search_results.json'), headers: { content_type: 'application/json; charset=utf-8' })
+        stub_get('?apikey=AK&s=nosearchresults')
+          .to_return(
+            body: fixture('no_search_results.json'),
+            headers: { content_type: 'application/json; charset=utf-8' }
+          )
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do

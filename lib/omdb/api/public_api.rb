@@ -7,7 +7,11 @@ module Omdb
         define_method(method) do |value, **options|
           Omdb::Api::Request.call(self, method, value, options) do |response|
             response = format_response(response)
-            response.dig('response') == 'False' ? Omdb::Api::Error.new(response) : Omdb::Api::Movie.new(response)
+            if response.dig('response') == 'False'
+              Omdb::Api::Error.new(response)
+            else
+              Omdb::Api::Movie.new(response)
+            end
           end
         end
       end

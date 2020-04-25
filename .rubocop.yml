@@ -6,3 +6,6 @@ Style/Documentation:
 
 Lint/Void:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false
