@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Nick Palaniuk']
   spec.email         = ['npalaniuk@gmail.com']
   spec.summary       = 'Ruby interface for the OMDB API'
-  spec.description   = 'A ruby interface for the OMDB API'
+  spec.description   = 'Ruby interface for the OMDB API'
   spec.homepage      = 'https://github.com/nikkypx/omdb-api'
   spec.license       = 'MIT'
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.require_paths = ['lib']
-  spec.add_dependency 'activesupport'
-  spec.add_dependency 'httparty'
+  spec.add_dependency 'activesupport', '~> 4.2.10'
+  spec.add_dependency 'httparty', '~> 0.15'
   spec.add_development_dependency 'bundler'
 end
