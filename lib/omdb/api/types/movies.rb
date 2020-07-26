@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Omdb
   module Api
     module Types

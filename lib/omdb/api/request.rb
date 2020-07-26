@@ -33,7 +33,7 @@ module Omdb
         year: 'y',
         return: 'r',
         version: 'v'
-      }
+      }.freeze
 
       def _set_params(params)
         {}.tap do |p|
