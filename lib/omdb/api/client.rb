@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'omdb/api/public_api'
+
 module Omdb
   module Api
     class Client

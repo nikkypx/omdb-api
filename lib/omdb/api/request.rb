@@ -1,38 +1,56 @@
 # frozen_string_literal: true
 
+require 'httparty'
+
 module Omdb
   module Api
     class Request
       BASE_URI = 'https://www.omdbapi.com'
 
-      attr_reader :client, :field, :value, :options
-
-      def self.call(client, method, value, options, &block)
-        new(client, method, value, options).make_get_to_imdb_api(&block)
+      def initialize(client, request_method, params)
+        @configuration = client.configuration
+        @request_method = request_method
+        @headers = _set_headers(params.delete(:headers))
+        @params = _set_params(params.delete(:query_params))
       end
 
-      def initialize(client, method, value, options)
-        @client  = client
-        @value   = CGI.escape(value)
-        @options = options
-        @field   = if /id/.match?(method)
-                     'i'
-                   elsif /title/.match?(method)
-                     't'
-                   else
-                     's'
-                   end
+      def perform
+        _http_client.public_send(
+          @request_method,
+          BASE_URI,
+          headers: @headers,
+          query: @params
+        )
       end
 
-      def make_get_to_imdb_api
-        params = {
-          query: {
-            apikey: client.configuration.api_key,
-            field.to_s => value.to_s
-          }.merge(options)
+      private
+
+      PARAMS_MAP = {
+        id: 'i',
+        title: 't',
+        search: 's',
+        plot: 'plot',
+        year: 'y',
+        return: 'r',
+        version: 'v'
+      }
+
+      def _set_params(params)
+        {}.tap do |p|
+          params.each { |k, v| p[PARAMS_MAP[k]] = v }
+        end.merge({ apikey: @configuration.api_key })
+      end
+
+      def _set_headers(headers)
+        key_translate = {
+          content_type: 'Content-Type'
         }
 
-        yield _http_client.get(BASE_URI, params)
+        translated_headers = headers.each_with_object({}) do |(k, v), o|
+          o[key_translate[k]] = v
+        end
+
+        { 'Content-Type' => 'application/json' }.merge(translated_headers)
       end
 
       def _http_client
