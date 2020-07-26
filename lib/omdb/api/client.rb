@@ -5,14 +5,21 @@ module Omdb
     class Client
       include PublicApi
 
-      attr_accessor :api_key
+      attr_reader :configuration
 
       def initialize(options = {})
-        options.each_pair do |k, v|
-          instance_variable_set("@#{k}", v)
-        end
-        yield(self) if block_given?
+        @configuration = Configuration.new
+
+        options.each { |k, v| @configuration.__send__("#{k}=", v) }
+
+        yield(@configuration) if block_given?
       end
+
+      class Configuration
+        attr_accessor :api_key
+      end
+
+      private_constant :Configuration
     end
   end
 end

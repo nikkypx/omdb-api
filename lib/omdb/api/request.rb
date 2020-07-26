@@ -27,12 +27,16 @@ module Omdb
       def make_get_to_imdb_api
         params = {
           query: {
-            apikey: client.api_key,
+            apikey: client.configuration.api_key,
             field.to_s => value.to_s
           }.merge(options)
         }
 
-        yield HTTParty.get(BASE_URI, params)
+        yield _http_client.get(BASE_URI, params)
+      end
+
+      def _http_client
+        HTTParty
       end
     end
   end
