@@ -30,7 +30,9 @@ Or install it yourself as:
 
 First you have to create a client object with your API key
 
-`client = Omdb::Api::Client.new(api_key: [your API key])`
+```ruby
+client = Omdb::Api::Client.new(api_key: [your API key])`
+```
 
 You can also set the API key with a block
 
@@ -60,19 +62,13 @@ the OMDB API spec.
 
 For example:
 
-`client.find_by_title('star wars', plot: 'short')`
+```ruby
+client.find_by_title('star wars', plot: 'short')`
+```
 
-Returns an `Omdb::Api::Movie`
+Returns an `Omdb::Api::Types::Movie`
 
-`#find_by_id('id')`
-
-`#find_by_title('title')`
-
-Returns an `Omdb::Api::Collection`
-
-`#search('movie')`
-
-An unsuccessful query will return an `Omdb::Api::Error` object
+An unsuccessful query will return an `Omdb::Api::Types::Error` object
 
 
 ## API
