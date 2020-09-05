@@ -70,6 +70,9 @@ Returns an `Omdb::Api::Types::Movie`
 
 An unsuccessful query will return an `Omdb::Api::Types::Error` object
 
+## TODO
+Implement all all find options
+
 
 ## API
 
