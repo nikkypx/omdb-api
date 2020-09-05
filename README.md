@@ -6,7 +6,7 @@
 
 ## Required
 
-You must request an API key first from [here](http://omdbapi.com/)
+You must request an API key first from [here](http://omdbapi.com/apikey.aspx)
 
 ## Installation
 
