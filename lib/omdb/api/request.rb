@@ -10,12 +10,12 @@ module Omdb
       def initialize(client, request_method, params)
         @configuration = client.configuration
         @request_method = request_method
-        @headers = _set_headers(params.delete(:headers))
-        @params = _set_params(params.delete(:query_params))
+        @headers = s_headers(params.delete(:headers))
+        @params = s_params(params.delete(:query_params))
       end
 
       def perform
-        _http_client.public_send(
+        http_client.public_send(
           @request_method,
           BASE_URI,
           headers: @headers,
@@ -35,13 +35,13 @@ module Omdb
         version: 'v'
       }.freeze
 
-      def _set_params(params)
+      def s_params(params)
         {}.tap do |p|
           params.each { |k, v| p[PARAMS_MAP[k]] = v }
         end.merge({ apikey: @configuration.api_key })
       end
 
-      def _set_headers(headers)
+      def s_headers(headers)
         key_translate = {
           content_type: 'Content-Type'
         }
@@ -53,7 +53,7 @@ module Omdb
         { 'Content-Type' => 'application/json' }.merge(translated_headers)
       end
 
-      def _http_client
+      def http_client
         HTTParty
       end
     end
