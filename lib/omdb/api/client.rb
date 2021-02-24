@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'omdb/api/utils'
 require 'omdb/api/public_api'
 
 module Omdb
   module Api
     class Client
+      include Utils
       include PublicApi
 
       attr_reader :configuration
