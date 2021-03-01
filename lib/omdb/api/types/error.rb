@@ -6,8 +6,8 @@ module Omdb
       include Dry.Types()
 
       class Error < Base
-        attribute :response, Omdb::Api::Types::String.optional.default(nil)
-        attribute :error,    Omdb::Api::Types::String.optional.default(nil)
+        attribute? :response, Omdb::Api::Types::String
+        attribute? :error,    Omdb::Api::Types::String
       end
     end
   end
