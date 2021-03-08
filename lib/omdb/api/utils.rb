@@ -25,7 +25,7 @@ module Omdb
       def handle_response(resp, klass)
         resp.deep_transform_keys! { |k| k.underscore.to_sym }
 
-        resp.fetch(:response) == 'True' ? klass.new(resp) : Omdb::Api::Types::Error.new(resp)
+        resp.fetch(:response) == 'True' ? klass.new(resp) : Models::Error.new(resp)
       end
     end
   end

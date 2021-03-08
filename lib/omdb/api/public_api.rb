@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'omdb/api/request'
-require 'omdb/api/types'
+require 'omdb/api/models'
 require 'omdb/api/public_api/find_by'
 require 'omdb/api/public_api/search'
 

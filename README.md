@@ -66,9 +66,9 @@ For example:
 client.find_by_title('star wars', plot: 'short')`
 ```
 
-Returns an `Omdb::Api::Types::Movie`
+Returns an `Omdb::Api::Models::Movie`
 
-An unsuccessful query will return an `Omdb::Api::Types::Error` object
+An unsuccessful query will return an `Omdb::Api::Models::Error` object
 
 ## TODO
 Implement all query params

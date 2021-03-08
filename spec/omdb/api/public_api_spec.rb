@@ -7,7 +7,7 @@ RSpec.describe Omdb::Api::PublicApi do
   let(:client) { Omdb::Api::Client.new(api_key: api_key) }
 
   describe '#find_by_title' do
-    describe 'success' do
+    context 'when success' do
       before do
         stub_get("?apikey=#{api_key}&t=star%20wars")
           .to_return(
@@ -49,7 +49,7 @@ RSpec.describe Omdb::Api::PublicApi do
       end
     end
 
-    describe 'error' do
+    context 'when error' do
       before do
         stub_get("?apikey=#{api_key}&t=badtitle")
           .to_return(
@@ -59,7 +59,7 @@ RSpec.describe Omdb::Api::PublicApi do
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
-        expect(client.find_by_title('badtitle')).to be_a(Omdb::Api::Types::Error)
+        expect(client.find_by_title('badtitle')).to be_a(Omdb::Api::Models::Error)
       end
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe Omdb::Api::PublicApi do
   end
 
   describe '#find_by_id' do
-    describe 'success' do
+    context 'when success' do
       before do
         stub_get("?apikey=#{api_key}&i=tt0083929")
           .to_return(
@@ -95,11 +95,11 @@ RSpec.describe Omdb::Api::PublicApi do
       end
 
       it 'returns an Omdb::Api::Movie object' do
-        expect(client.find_by_id('tt0083929')).to be_a(Omdb::Api::Types::Movie)
+        expect(client.find_by_id('tt0083929')).to be_a(Omdb::Api::Models::Movie)
       end
     end
 
-    describe 'error' do
+    context 'when error' do
       before do
         stub_get("?apikey=#{api_key}&i=badid")
           .to_return(
@@ -110,7 +110,7 @@ RSpec.describe Omdb::Api::PublicApi do
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
         response = client.find_by_id('badid')
-        expect(response).to be_a(Omdb::Api::Types::Error)
+        expect(response).to be_a(Omdb::Api::Models::Error)
         expect(response.response).to eq('False')
         expect(response.error).to eq('Incorrect IMDb ID.')
       end
@@ -118,7 +118,7 @@ RSpec.describe Omdb::Api::PublicApi do
   end
 
   describe '#search' do
-    describe 'success' do
+    context 'when success' do
       before do
         stub_get("?apikey=#{api_key}&s=indiana%20jones")
           .to_return(
@@ -132,17 +132,17 @@ RSpec.describe Omdb::Api::PublicApi do
         expect(a_get("?apikey=#{api_key}&s=indiana%20jones")).to have_been_made
       end
 
-      it 'returns an Omdb::Api::Types::Movies object' do
-        expect(client.search('indiana jones')).to be_a(Omdb::Api::Types::Movies)
+      it 'returns an Omdb::Api::Models::Movies object' do
+        expect(client.search('indiana jones')).to be_a(Omdb::Api::Models::Movies)
       end
 
       it 'collection has MovieResult objects' do
         expect(client.search('indiana jones').search).to be_a(Array)
-        expect(client.search('indiana jones').search.first).to be_a(Omdb::Api::Types::MovieResult)
+        expect(client.search('indiana jones').search.first).to be_a(Omdb::Api::Models::MovieResult)
       end
     end
 
-    describe 'error' do
+    context 'when error' do
       before do
         stub_get("?apikey=#{api_key}&s=nosearchresults")
           .to_return(
@@ -152,7 +152,7 @@ RSpec.describe Omdb::Api::PublicApi do
       end
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
-        expect(client.search('nosearchresults')).to be_a(Omdb::Api::Types::Error)
+        expect(client.search('nosearchresults')).to be_a(Omdb::Api::Models::Error)
       end
     end
   end

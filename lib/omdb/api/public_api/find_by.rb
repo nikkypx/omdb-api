@@ -6,7 +6,7 @@ module Omdb
       module FindBy
         def find_by_id(id, **options)
           perform_get(
-            klass: Omdb::Api::Types::Movie,
+            klass: Models::Movie,
             query_params: { id: id }.merge(options),
             headers: options.fetch(:headers, {})
           )
@@ -14,7 +14,7 @@ module Omdb
 
         def find_by_title(title, **options)
           perform_get(
-            klass: Omdb::Api::Types::Movie,
+            klass: Models::Movie,
             query_params: { title: title }.merge(options),
             headers: options.fetch(:headers, {})
           )

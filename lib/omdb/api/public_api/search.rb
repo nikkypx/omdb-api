@@ -6,7 +6,7 @@ module Omdb
       module Search
         def search(value, **options)
           perform_get(
-            klass: Omdb::Api::Types::Movies,
+            klass: Models::Movies,
             query_params: { search: value }.merge(options),
             headers: options.fetch(:headers, {})
           )

@@ -13,9 +13,7 @@ module Omdb
 
       def initialize(options = {})
         @configuration = Configuration.new
-
         options.each { |k, v| @configuration.__send__("#{k}=", v) }
-
         yield(@configuration) if block_given?
       end
 
