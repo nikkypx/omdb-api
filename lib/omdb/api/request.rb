@@ -37,10 +37,10 @@ module Omdb
       end
 
       def format_headers(headers)
-        key_translate = { content_type: 'Content-Type' }
+        headers_map = { content_type: 'Content-Type' }
 
         headers.each_with_object({ 'Content-Type' => 'application/json' }) do |(k, v), o|
-          o[key_translate[k]] = v
+          o[headers_map[k]] = v
         end
       end
     end
