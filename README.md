@@ -68,10 +68,6 @@ Returns an `Omdb::Api::Models::Movie`
 
 An unsuccessful query will return an `Omdb::Api::Models::Error` object
 
-## TODO
-Implement all query params
-
-
 ## API
 
 **Parent**<br />
