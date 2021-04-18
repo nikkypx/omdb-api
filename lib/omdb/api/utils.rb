@@ -12,20 +12,18 @@ module Omdb
       def perform_request(request_method, options)
         klass = options.delete(:klass)
 
-        response_handler(klass) do
-          Omdb::Api::Request.new(self, request_method, options).perform
+        res = Omdb::Api::Request.new(self, request_method, options).perform
+        response_handler(res, klass)
+      end
+
+      def response_handler(res, klass)
+        res.deep_transform_keys! { |k| k.underscore.to_sym }
+
+        if res.fetch(:response) == 'True'
+          klass.new(res)
+        else
+          Models::Error.new(res)
         end
-      end
-
-      def response_handler(klass)
-        handle_response(yield, klass)
-        # rescue Errno::ECONNREFUSED => e
-      end
-
-      def handle_response(resp, klass)
-        resp.deep_transform_keys! { |k| k.underscore.to_sym }
-
-        resp.fetch(:response) == 'True' ? klass.new(resp) : Models::Error.new(resp)
       end
     end
   end
