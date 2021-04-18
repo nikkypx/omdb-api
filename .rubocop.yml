@@ -4,8 +4,5 @@ Metrics:
 Style/Documentation:
   Enabled: false
 
-Lint/Void:
-  Enabled: false
-
 Layout/LineLength:
   Enabled: false
