@@ -13,17 +13,20 @@ module Omdb
         klass = options.delete(:klass)
 
         res = Omdb::Api::Request.new(self, request_method, options).perform
-        response_handler(res, klass)
+
+        response_handler(res) do |r|
+          if r.fetch(:response) == 'True'
+            klass.new(r)
+          else
+            Models::Error.new(r)
+          end
+        end
       end
 
-      def response_handler(res, klass)
+      def response_handler(res)
         res.deep_transform_keys! { |k| k.underscore.to_sym }
 
-        if res.fetch(:response) == 'True'
-          klass.new(res)
-        else
-          Models::Error.new(res)
-        end
+        yield res
       end
     end
   end
