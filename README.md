@@ -107,7 +107,11 @@ Omdb::Api::Error
 
 ## Development
 
-`$ rake` to run the specs
+To run the specs
+
+```bash
+  $ bundle exec rake
+```
 
 ## Contributing
 
