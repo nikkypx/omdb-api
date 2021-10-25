@@ -31,6 +31,8 @@ module Omdb
       }.freeze
 
       def format_params(params)
+        params.symbolize_keys!
+
         {}.tap do |p|
           params.each { |k, v| p[PARAMS_MAP[k]] = v }
         end.merge({ apikey: @configuration.api_key })
