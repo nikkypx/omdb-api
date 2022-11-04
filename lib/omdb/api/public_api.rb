@@ -17,10 +17,10 @@ module Omdb
         end
       end
 
-      def search(term, **opts)
+      def search term, **opts
         perform_get(
           query_params: { search: term }.merge(opts),
-          klass: Models::Movies,
+          klass: Models::Collection,
           headers: opts.fetch(:headers, {})
         )
       end

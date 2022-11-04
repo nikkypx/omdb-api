@@ -3,7 +3,6 @@
 require 'bundler/setup'
 require 'omdb/api'
 require 'webmock/rspec'
-require 'faker'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|

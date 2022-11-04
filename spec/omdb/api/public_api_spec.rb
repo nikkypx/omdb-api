@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Omdb::Api::PublicApi do
-  let(:api_key) { Faker::Lorem.word }
+  let(:api_key) { "foobar" }
   let(:client) { Omdb::Api::Client.new(api_key: api_key) }
 
   describe '#find_by_title' do
@@ -111,7 +111,6 @@ RSpec.describe Omdb::Api::PublicApi do
       it 'returns an Omdb::Api::Error object when the title is not found' do
         response = client.find_by_id('badid')
         expect(response).to be_a(Omdb::Api::Models::Error)
-        expect(response.response).to eq('False')
         expect(response.error).to eq('Incorrect IMDb ID.')
       end
     end
@@ -132,13 +131,13 @@ RSpec.describe Omdb::Api::PublicApi do
         expect(a_get("?apikey=#{api_key}&s=indiana%20jones")).to have_been_made
       end
 
-      it 'returns an Omdb::Api::Models::Movies object' do
-        expect(client.search('indiana jones')).to be_a(Omdb::Api::Models::Movies)
+      it 'returns an Omdb::Api::Models::Collection object' do
+        expect(client.search('indiana jones')).to be_a(Omdb::Api::Models::Collection)
       end
 
-      it 'collection has MovieResult objects' do
+      it 'collection has Result objects' do
         expect(client.search('indiana jones').search).to be_a(Array)
-        expect(client.search('indiana jones').search.first).to be_a(Omdb::Api::Models::MovieResult)
+        expect(client.search('indiana jones').search.first).to be_a(Omdb::Api::Models::Result)
       end
     end
 
