@@ -17,3 +17,11 @@ and mapped to the Omdb API params - implemented so far:
 ```
 
 * a collection is now called `Movies` and will return `MovieResult` objects
+
+## 3.0 (2022-11-04)
+
+* error object no longer contains response key
+* `dry-struct` no longer dependency 
+* `Omdb::Api::Models::Movies` object is now named `Omdb::Api::Models::Collection` 
+* `Omdb::Api::Models::MovieResult` object is now named `Omdb::Api::Result` 
+* `Omdb::Api::Models::Movie` now includes more attributes

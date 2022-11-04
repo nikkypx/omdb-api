@@ -8,7 +8,21 @@ Ruby interface to the Open Movie Database API
 
 == FEATURES/PROBLEMS:
 
+  #find_by_id
+  #find_by_title
+  #search
+
+== SYNOPSIS:
+
   require 'omdb/api'
+
+  client = Omdb::Api::Client.new(api_key: [your API key])`
+
+  or configure with a block
+
+  client = Omdb::Api::Client.new do |config|
+    config.api_key = api_key
+  end
 
   client.find_by_title('star wars')
   => #<Omdb::Api::Movie:0x007f9a7d453cf0 @actors="Harrison Ford"...
@@ -19,18 +33,6 @@ Ruby interface to the Open Movie Database API
   client.search('indiana jones')
   => [#<Omdb::Api::Movie:0x007ffec28ad1a8 @title="Indiana...
 
-
-== SYNOPSIS:
-
-  * Configuration
-
-  client = Omdb::Api::Client.new(api_key: [your API key])`
-
-  * Configure With block
-
-  client = Omdb::Api::Client.new do |config|
-    config.api_key = api_key
-  end
 
 == REQUIREMENTS:
 
@@ -44,7 +46,7 @@ Ruby interface to the Open Movie Database API
 
 (The MIT License)
 
-Copyright (c) 2022 FIX
+Copyright (c) 2022 Nicholas Palaniuk
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
