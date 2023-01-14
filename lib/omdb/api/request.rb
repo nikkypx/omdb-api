@@ -27,14 +27,14 @@ module Omdb
       end
 
       def headers args
-        headers_map = { content_type: 'Content-Type' }
-
         args.reduce({ 'Content-Type' => 'application/json' }) do |o, (k, v)|
-          o[headers_map[k]] = v
+          o[HEADERS_MAP[k]] = v
         end
       end
 
-      BASE_URI = 'https://www.omdbapi.com'
+      BASE_URI = 'https://www.omdbapi.com'.freeze
+
+      HEADERS_MAP = { content_type: 'Content-Type' }.freeze
 
       PARAMS_MAP = {
         id: 'i',
