@@ -2,6 +2,7 @@
 
 require 'omdb/api/utils'
 require 'omdb/api/public_api'
+require 'omdb/api/configuration'
 
 module Omdb
   module Api
@@ -11,17 +12,9 @@ module Omdb
 
       attr_reader :configuration
 
-      def initialize options = {}
-        @configuration = Configuration.new
-        options.each { |k, v| @configuration.__send__("#{k}=", v) }
-        yield @configuration if block_given?
+      def initialize(options = {}, &block)
+        @configuration = Configuration.build(options, &block)
       end
-
-      class Configuration
-        attr_accessor :api_key
-      end
-
-      private_constant :Configuration
     end
   end
 end

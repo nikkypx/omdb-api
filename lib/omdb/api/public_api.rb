@@ -8,21 +8,27 @@ module Omdb
     module PublicApi
       %i[find_by_id find_by_title].each do |method|
         define_method method do |arg, **opts|
-          key = method.to_s.split('_').last
+          key = method.to_s.split('_').last.to_sym
           perform_get(
-            query_params: { key => arg }.merge(opts),
+            query_params: query_options(opts).merge(key => arg),
             klass: Models::Movie,
             headers: opts.fetch(:headers, {})
           )
         end
       end
 
-      def search term, **opts
+      def search(term, **opts)
         perform_get(
-          query_params: { search: term }.merge(opts),
+          query_params: query_options(opts).merge(search: term),
           klass: Models::Collection,
           headers: opts.fetch(:headers, {})
         )
+      end
+
+      private
+
+      def query_options(options)
+        options.reject { |key, _| key == :headers }
       end
     end
   end

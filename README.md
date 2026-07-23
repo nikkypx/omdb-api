@@ -15,25 +15,32 @@ require 'omdb/api'
 
 client = Omdb::Api::Client.new(api_key: [your API key])
 
-# Or configure with a block
+# Or configure with a block. Configuration is validated and made immutable
+# when the client is created, so one client can safely be shared by threads.
 client = Omdb::Api::Client.new do |config|
   config.api_key = api_key
+  config.timeout = 5
+  config.headers = { 'User-Agent' => 'my-app' }
 end
 
 client.find_by_title('star wars')
-# => #<Omdb::Api::Movie:0x007f9a7d453cf0 @actors="Harrison Ford", ...>
+# => #<struct Omdb::Api::Models::Movie actors="Harrison Ford", ...>
 
 client.find_by_id('tt0083929')
-# => #<Omdb::Api::Movie:0x007f960a648f28 @actors="Sean Penn, Jennifer Jason Leigh, Judge Reinhold, Robert Romanus", ...>
+# => #<struct Omdb::Api::Models::Movie actors="Sean Penn, ...", ...>
 
 client.search('indiana jones')
-# => [#<Omdb::Api::Movie:0x007ffec28ad1a8 @title="Indiana Jones and the Last Crusade", ...>, ...]
+# => #<struct Omdb::Api::Models::Collection search=[#<struct Omdb::Api::Models::Result ...>]>
 ```
+
+Supported configuration options are `api_key`, `base_uri`, `headers`, and
+`timeout`. The API key is required. Per-request headers can be supplied with
+`headers:`, and search options include `year`, `type`, `plot`, and `page`.
 
 ## Installation
 
 ```ruby
-gem 'omdb-api', '~> 1.0.0'
+gem 'omdb-api', '~> 4.0'
 ```
 
 ## License

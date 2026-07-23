@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Omdb::Api::PublicApi do
-  let(:api_key) { "foobar" }
+  let(:api_key) { 'foobar' }
   let(:client) { Omdb::Api::Client.new(api_key: api_key) }
 
   describe '#find_by_title' do
@@ -76,6 +76,61 @@ RSpec.describe Omdb::Api::PublicApi do
     it 'requests the correct resource' do
       client.find_by_title('star wars', plot: 'short')
       expect(a_get("?apikey=#{api_key}&plot=short&t=star%20wars")).to have_been_made
+    end
+
+    it 'keeps headers out of the query string without mutating options' do
+      options = { plot: 'short', headers: { 'X-Request-ID' => 'request-1' } }
+
+      client.find_by_title('star wars', **options)
+
+      expect(
+        a_get("?apikey=#{api_key}&plot=short&t=star%20wars")
+          .with(headers: { 'X-Request-ID' => 'request-1' })
+      ).to have_been_made
+      expect(options).to eq(plot: 'short', headers: { 'X-Request-ID' => 'request-1' })
+    end
+
+    it 'rejects unknown query options' do
+      expect do
+        client.find_by_title('star wars', unknown: 'value')
+      end.to raise_error(ArgumentError, 'unknown query parameter: unknown')
+    end
+
+    it 'keeps the positional argument when an overlapping option is provided' do
+      stub_get("?apikey=#{api_key}&t=star%20wars")
+        .to_return(
+          body: fixture('find_by_title.json'),
+          headers: { content_type: 'application/json' }
+        )
+
+      client.find_by_title('star wars', title: 'ignored')
+
+      expect(a_get("?apikey=#{api_key}&t=star%20wars")).to have_been_made
+    end
+  end
+
+  describe 'unexpected response shapes' do
+    it 'ignores unknown fields from series responses' do
+      stub_get("?apikey=#{api_key}&t=game%20of%20thrones")
+        .to_return(
+          body: fixture('find_by_series.json'),
+          headers: { content_type: 'application/json' }
+        )
+
+      series = client.find_by_title('game of thrones')
+
+      expect(series).to be_a(Omdb::Api::Models::Movie)
+      expect(series.title).to eq('Game of Thrones')
+      expect(series.type).to eq('series')
+    end
+
+    it 'raises when the HTTP request fails' do
+      stub_get("?apikey=#{api_key}&t=star%20wars")
+        .to_return(status: 500, body: 'server error')
+
+      expect do
+        client.find_by_title('star wars')
+      end.to raise_error(Omdb::Api::Error, 'OMDb request failed with status 500')
     end
   end
 
@@ -152,6 +207,32 @@ RSpec.describe Omdb::Api::PublicApi do
 
       it 'returns an Omdb::Api::Error object when the title is not found' do
         expect(client.search('nosearchresults')).to be_a(Omdb::Api::Models::Error)
+      end
+    end
+  end
+
+  describe 'thread safety' do
+    it 'supports concurrent requests from one client' do
+      titles = Array.new(10) { |index| "movie #{index}" }
+      titles.each do |title|
+        stub_request(:get, Omdb::Api::Request::BASE_URI)
+          .with(query: { apikey: api_key, t: title })
+          .to_return(
+            body: fixture('find_by_title.json'),
+            headers: { content_type: 'application/json' }
+          )
+      end
+
+      threads = titles.map do |title|
+        Thread.new { client.find_by_title(title) }
+      end
+
+      expect(threads.map(&:value)).to all(be_a(Omdb::Api::Models::Movie))
+      titles.each do |title|
+        expect(
+          a_request(:get, Omdb::Api::Request::BASE_URI)
+            .with(query: { apikey: api_key, t: title })
+        ).to have_been_made.once
       end
     end
   end

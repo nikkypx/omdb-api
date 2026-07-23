@@ -2,6 +2,7 @@
 
 module Omdb
   module Api
-    VERSION = '4.0.0'
+    class Error < StandardError
+    end
   end
 end

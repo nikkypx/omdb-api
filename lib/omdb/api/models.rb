@@ -5,31 +5,31 @@ module Omdb
     module Models
       Movie = Struct.new(
         *%i[
-        actors
-        awards
-        box_office
-        country
-        director
-        dvd
-        error
-        genre
-        imdb_id
-        imdb_rating
-        imdb_votes
-        language
-        metascore
-        plot
-        poster
-        rated
-        ratings
-        production
-        released
-        website
-        runtime
-        title
-        type
-        writer
-        year
+          actors
+          awards
+          box_office
+          country
+          director
+          dvd
+          error
+          genre
+          imdb_id
+          imdb_rating
+          imdb_votes
+          language
+          metascore
+          plot
+          poster
+          rated
+          ratings
+          production
+          released
+          website
+          runtime
+          title
+          type
+          writer
+          year
         ],
         keyword_init: true
       )
